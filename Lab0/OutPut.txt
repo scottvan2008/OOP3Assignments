@@ -1,0 +1,295 @@
+Welcome to Modern Appliances!
+How may we assist you?
+1 – Check out Appliance
+2 – Find appliances by brand
+3 – Display appliances by type
+4 – Produce random Appliance list
+5 – Save & exit
+Enter option:
+1
+Enter the item number of an Appliance:
+255131796
+Appliance 255131796 has been checked out.
+Welcome to Modern Appliances!
+How may we assist you?
+1 – Check out Appliance
+2 – Find appliances by brand
+3 – Display appliances by type
+4 – Produce random Appliance list
+5 – Save & exit
+Enter option:
+1
+Enter the item number of an Appliance:
+143826003
+The Appliance is not available to be checked out.
+Welcome to Modern Appliances!
+How may we assist you?
+1 – Check out Appliance
+2 – Find appliances by brand
+3 – Display appliances by type
+4 – Produce random Appliance list
+5 – Save & exit
+Enter option:
+1
+Enter the item number of an Appliance:
+1234567895
+No appliances found with that item number.
+Welcome to Modern Appliances!
+How may we assist you?
+1 – Check out Appliance
+2 – Find appliances by brand
+3 – Display appliances by type
+4 – Produce random Appliance list
+5 – Save & exit
+Enter option:
+2
+Enter brand to search for:
+Tefal
+Matching Appliances:
+ItemNumber: 535981394
+Brand: Tefal
+Quantity: 90
+Wattage: 700.0
+Color: bronze
+Price: 320.0
+Feature: Third Rack
+SoundRating: 
+
+
+ItemNumber: 243074424
+Brand: Tefal
+Quantity: 61
+Wattage: 4000.0
+Color: black
+Price: 760.0
+Grade: Residential
+Battery voltage: Low
+
+
+Welcome to Modern Appliances!
+How may we assist you?
+1 – Check out Appliance
+2 – Find appliances by brand
+3 – Display appliances by type
+4 – Produce random Appliance list
+5 – Save & exit
+Enter option:
+3
+Appliance Types
+1 – Refrigerators
+2 – Vacuums
+3 – Microwaves
+4 – Dishwashers
+Enter type of Appliance:
+1
+Enter number of doors: 2 (double door), 3 (three doors) or 4 (four doors):
+3
+Matching refrigerators:
+ItemNumber: 146947171
+Brand: Black & Decker
+Quantity: 112
+Wattage: 1800.0
+Color: grey
+Price: 1800.0
+Number of Doors: Three Doors
+Height: 70.0
+Width: 31.0
+
+
+ItemNumber: 172911121
+Brand: Philips
+Quantity: 144
+Wattage: 700.0
+Color: black
+Price: 3100.0
+Number of Doors: Three Doors
+Height: 71.0
+Width: 30.0
+
+
+Welcome to Modern Appliances!
+How may we assist you?
+1 – Check out Appliance
+2 – Find appliances by brand
+3 – Display appliances by type
+4 – Produce random Appliance list
+5 – Save & exit
+Enter option:
+3
+Appliance Types
+1 – Refrigerators
+2 – Vacuums
+3 – Microwaves
+4 – Dishwashers
+Enter type of Appliance:
+2
+Enter battery voltage value. 18 V (low) or 24 V (high)
+18
+Matching vacuums:
+ItemNumber: 255131796
+Brand: Black & Decker
+Quantity: 54
+Wattage: 1500.0
+Color: white
+Price: 500.0
+Grade: Residential
+Battery voltage: Low
+
+
+ItemNumber: 263788832
+Brand: Hoover
+Quantity: 59
+Wattage: 600.0
+Color: black
+Price: 750.0
+Grade: Residential
+Battery voltage: Low
+
+
+ItemNumber: 231784690
+Brand: Russell Hobbs
+Quantity: 155
+Wattage: 175.0
+Color: grey
+Price: 380.0
+Grade: Residential
+Battery voltage: Low
+
+
+ItemNumber: 243074424
+Brand: Tefal
+Quantity: 61
+Wattage: 4000.0
+Color: black
+Price: 760.0
+Grade: Residential
+Battery voltage: Low
+
+
+ItemNumber: 240201796
+Brand: Dyson
+Quantity: 81
+Wattage: 1050.0
+Color: white
+Price: 290.0
+Grade: Residential
+Battery voltage: Low
+
+
+Welcome to Modern Appliances!
+How may we assist you?
+1 – Check out Appliance
+2 – Find appliances by brand
+3 – Display appliances by type
+4 – Produce random Appliance list
+5 – Save & exit
+Enter option:
+3
+Appliance Types
+1 – Refrigerators
+2 – Vacuums
+3 – Microwaves
+4 – Dishwashers
+Enter type of Appliance:
+3
+Room where the Microwave will be installed: K (kitchen) or W (work site):
+w
+ItemNumber: 328237584
+Brand: Miele
+Quantity: 90
+Wattage: 1200.0
+Color: bronze
+Price: 250.23
+Capacity: 2.1
+Room Type: Work Site
+
+
+ItemNumber: 333607621
+Brand: Vax
+Quantity: 113
+Wattage: 440.0
+Color: silver
+Price: 123.99
+Capacity: 1.6
+Room Type: Work Site
+
+
+Welcome to Modern Appliances!
+How may we assist you?
+1 – Check out Appliance
+2 – Find appliances by brand
+3 – Display appliances by type
+4 – Produce random Appliance list
+5 – Save & exit
+Enter option:
+3
+Appliance Types
+1 – Refrigerators
+2 – Vacuums
+3 – Microwaves
+4 – Dishwashers
+Enter type of Appliance:
+4
+Enter the sound rating of the Dishwasher: Qt (Quietest), Qr (Quieter), Qu(Quiet) or M (Moderate):
+m
+ItemNumber: 571522655
+Brand: Philips
+Quantity: 228
+Wattage: 440.0
+Color: grey
+Price: 390.0
+Feature: Finger Print Resistant
+SoundRating: 
+
+
+ItemNumber: 493374445
+Brand: Philips
+Quantity: 125
+Wattage: 1650.0
+Color: silver
+Price: 510.0
+Feature: Clean with Steam
+SoundRating: 
+
+
+Welcome to Modern Appliances!
+How may we assist you?
+1 – Check out Appliance
+2 – Find appliances by brand
+3 – Display appliances by type
+4 – Produce random Appliance list
+5 – Save & exit
+Enter option:
+4
+Enter number of appliances:
+2
+ItemNumber: 383477937
+Brand: Miele
+Quantity: 201
+Wattage: 2350.0
+Color: white
+Price: 179.9
+Capacity: 1.8
+Room Type: Kitchen
+
+
+ItemNumber: 274807482
+Brand: Black & Decker
+Quantity: 27
+Wattage: 1800.0
+Color: black
+Price: 375.0
+Grade: Commercial
+Battery voltage: High
+
+
+Welcome to Modern Appliances!
+How may we assist you?
+1 – Check out Appliance
+2 – Find appliances by brand
+3 – Display appliances by type
+4 – Produce random Appliance list
+5 – Save & exit
+Enter option:
+5
+Bye!
