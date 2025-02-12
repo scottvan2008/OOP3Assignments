@@ -23,7 +23,7 @@ public class Driver {
         Collections.sort(students);
         System.out.println("Sorted by name: " + students);
 
-        // Sort by age using Comparator test
+        // Sort by age using Comparator
         Collections.sort(students, new StudentAgeComparator());
         System.out.println("Sorted by age: " + students);
     }
