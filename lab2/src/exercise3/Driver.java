@@ -58,19 +58,7 @@ public class Driver {
         }
     }
 
-    // Partition function for QuickSort (Descending Order)
-    private static int partition(Integer[] arr, int low, int high) {
-        int pivot = arr[high]; // Pivot element (choosing the last element as pivot)
-        int i = low - 1;
-        for (int j = low; j < high; j++) {
-            if (arr[j] > pivot) { // Move elements greater than pivot to the left
-                i++;
-                swap(arr, i, j);
-            }
-        }
-        swap(arr, i + 1, high); // Place pivot in its correct position
-        return i + 1;
-    }
+
 
     // Swap function to exchange two elements in the array
     private static void swap(Integer[] arr, int i, int j) {
