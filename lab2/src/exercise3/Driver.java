@@ -58,9 +58,6 @@ public class Driver {
         }
     }
 
-
-
-    // Swap function to exchange two elements in the array
     private static void swap(Integer[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
