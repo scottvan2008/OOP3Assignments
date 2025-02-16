@@ -17,15 +17,23 @@ public class Driver {
         students.add(new Student("Anderson", 34));
         students.add(new Student("Moore", 33));
 
-        System.out.println("Before sorting: " + students);
+        System.out.println("Before sorting:");
+        for (Student student : students) {
+            System.out.println(student);
+        }
 
         // Sort by name using Comparable (natural ordering)
         Collections.sort(students);
-        System.out.println("Sorted by name: " + students);
+        System.out.println("\nSorted by name:");
+        for (Student student : students) {
+            System.out.println(student);
+        }
 
         // Sort by age using Comparator
         Collections.sort(students, new StudentAgeComparator());
-        System.out.println("Sorted by age: " + students);
+        System.out.println("\nSorted by age:");
+        for (Student student : students) {
+            System.out.println(student);
+        }
     }
 }
-
