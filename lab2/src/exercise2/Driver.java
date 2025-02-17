@@ -1,3 +1,6 @@
+// Static method BinarySearch with sorted list and target number as it's parameter
+// and it's implementation
+
 package exercise2;
 
 import java.util.Random;
@@ -5,56 +8,59 @@ import java.util.Scanner;
 
 public class Driver {
 
-    public static final int SIZE = 100;
-    public static final int UPPER_BOUND = 10;
+	public static final int SIZE = 100;
+	public static final int UPPER_BOUND = 10;
 
-    public static void main(String[] args) {
-        Integer[] nums = new Integer[SIZE];
-        
-        Random rand = new Random();
-        
-        nums[0] = rand.nextInt(UPPER_BOUND);
+	public static void main(String[] args) {
 
-        for (int i = 1; i < SIZE; i++) {
-            nums[i] = nums[i - 1] + rand.nextInt(UPPER_BOUND);
-            System.out.println(nums[i]); // Print each element to the console
-        }
+		Integer[] nums = new Integer[SIZE]; // List to search the target in
+		Random rand = new Random(); // Object of Random class
+		int randnum = rand.nextInt(UPPER_BOUND); // First random number
+		nums[0] = randnum;
+		Scanner scan = new Scanner(System.in); // Object of Scanner class
+		int target, targetIndex;
 
-        // Initialize a Scanner object to read user input
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the target number to search: ");
-        int target = scanner.nextInt(); // Read the target number from the user
-        scanner.close(); // Close the scanner to free resources
+		// Populate the array
+		for (int i = 1; i < SIZE; i++) {
+			randnum = rand.nextInt(UPPER_BOUND);
+			nums[i] = nums[i - 1] + randnum;
+		}
 
-        // Perform a binary search on the array to find the target number
-        int result = binarySearch(nums, target);
-        
-        // Check if the target was found and print the appropriate message
-        if (result != -1) {
-            System.out.println("Target " + target + " found at index: " + result);
-        } else {
-            System.out.println("Target " + target + " not found in the list.");
-        }
-    }
+		// Print the array
+		System.out.println("The sorted list is: ");
+		for (int i = 0; i < nums.length; i++) {
+			System.out.println(i + ". " + nums[i]);
+		}
 
-    // Binary search method to find the target in a sorted array
-    public static int binarySearch(Integer[] nums, int target) {
-        int left = 0, right = nums.length - 1; // Initialize the search boundaries
+		System.out.println("Enter the target number to find in the list");
+		target = scan.nextInt(); // Taking the user input for target
 
-        // Continue searching while the left boundary is less than or equal to the right boundary
-        while (left <= right) {
-            int mid = left + (right - left) / 2; // Calculate the middle index
+		// Binary search to see if the method is in the list
+		targetIndex = BinarySearch(nums, target);
+		if (targetIndex == -1) {
+			System.out.println("\nThe target number " + target + " is not on the list");
+		} else {
+			System.out.println("\nThe target number " + target + " is on the index " + targetIndex);
+		}
+		scan.close();
+	}
 
-            // Check if the middle element is the target
-            if (nums[mid] == target) {
-                return mid; // Return the index of the target
-            } else if (nums[mid] < target) {
-                left = mid + 1; // Adjust the left boundary if the target is in the right half
-            } else {
-                right = mid - 1; // Adjust the right boundary if the target is in the left half
-            }
-        }
+	public static int BinarySearch(Integer[] list, Integer target) {
+		int min = 0;
+		int max = list.length - 1;
+		int midpoint = (min + max) / 2;
 
-        return -1; // Return -1 if the target is not found in the array
-    }
+		while (min <= max) {
+			midpoint = (min + max) / 2;
+			if (list[midpoint].compareTo(target) == 0) // The target is equal to the current mid inde
+				return midpoint;
+			else if (list[midpoint].compareTo(target) > 0) { // The target is in left half
+				max = midpoint - 1;
+			} else if (list[midpoint].compareTo(target) < 0) { // The target in in right half
+				min = midpoint + 1;
+			}
+		}
+		return -1; // The target could not be found
+	}
+
 }
