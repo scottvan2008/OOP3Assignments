@@ -31,16 +31,35 @@ public class AppDriver {
     public static String fileName = ""; // File name to read shapes from
     public static int shapeIndex = 0; // Index to track the number of shapes added to the array
     public static Shape3D[] shapesArray; // Array to store 3D shapes
+    public static boolean isValidInput = true; // Flag to track if input is valid
 
     public static void main(String[] args) {
         // Step 1: Parse command-line arguments to get file path and sorting directions
         getFilePathAndSortDirections(args);
 
+        // If input is invalid, exit early
+        if (!isValidInput) {
+            System.out.println("Invalid input. Exiting program.");
+            return;
+        }
+
         // Step 2: Read the file, create shapes, and populate the shapes array
         int numberOfShapes = createAndPopulateArray();
 
+        // If no shapes were read, exit early
+        if (numberOfShapes == 0) {
+            System.out.println("No shapes were read from the file. Exiting program.");
+            return;
+        }
+
         // Step 3: Sort the shapes array and measure the time taken
         Result r = sortTheArrayAndCountTime();
+
+        // If sorting was not performed (invalid algorithm), exit early
+        if (r.sortAlgorithmName.isEmpty()) {
+            System.out.println("Invalid sorting algorithm. Exiting program.");
+            return;
+        }
 
         // Step 4: Display the results, including sorted shapes and sorting time
         finalScreenDisplay(numberOfShapes, r);
@@ -89,6 +108,7 @@ public class AppDriver {
                 System.out.println("Invalid sort: -s or -S followed by b (bubble), s (selection), i (insertion), m (merge), q (quick) or z\r\n"
                         + "(your choice of sorting algorithm) with no spaces\r\n"
                         + "");
+                isValidInput = false; // Mark input as invalid
                 break;
         }
 
