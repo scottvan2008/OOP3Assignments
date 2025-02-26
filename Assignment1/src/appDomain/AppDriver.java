@@ -104,6 +104,11 @@ public class AppDriver {
                 sortAlgorithmName = "BubbleSort";
                 break;
             // Add cases for other sorting algorithms (e.g., selection, insertion, merge, quick)
+            case 'q':
+                Sort.quickSort(shapesArray); // Quick sort
+                sortAlgorithmName = "QuickSort";
+                break;
+            // Add cases for other sorting algorithms (e.g., selection, insertion, merge, quick)
             default:
                 System.out.println("Invalid sort: -s or -S followed by b (bubble), s (selection), i (insertion), m (merge), q (quick) or z\r\n"
                         + "(your choice of sorting algorithm) with no spaces\r\n"
