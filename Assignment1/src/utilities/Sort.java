@@ -35,4 +35,126 @@ public class Sort {
             }
         }
     }
-}
+    
+    /**
+     * Quick sort implementation
+     * it chooses a pivot and splits the array into two sub-lists. 
+     * it compares the elements with that pivot and keeps doing that until they are in the right place. 
+     * when there is only one element left in the sub-array, as a single element is already sorted.
+     */
+    
+    public static void quickSort(Comparable[] array) {
+        quickSortHelper(array, 0, array.length - 1);
+    }
+    
+    /**
+     * Helper method that applies the quicksort algorithm recursively.
+     * 
+     * @param array The array to be sorted.
+     * @param low   The starting index of the portion to be sorted.
+     * @param high  The ending index of the portion to be sorted.
+     */
+
+		    private static void quickSortHelper(Comparable[] array, int low, int high) {
+		        if (low < high) {
+		            int partitionIndex = slice(array, low, high);
+		            
+		            // Recursively sort elements before and after partition
+		            quickSortHelper(array, low, partitionIndex - 1);
+		            quickSortHelper(array, partitionIndex + 1, high);
+		        }
+		    }
+		    
+		    /**
+		     * Slices the array around a pivot such that elements smaller than
+		     * the pivot are on the left, and elements greater than the pivot are on the right.
+		     * 
+		     * @param array The array to partition.
+		     * @param low   The starting index.
+		     * @param high  The ending index (pivot position).
+		     * @return The partition index where the pivot is placed correctly.
+		     */
+		
+		    private static int slice(Comparable[] array, int low, int high) {
+		        Comparable pivot = array[high]; // Choose the last element as the pivot
+		        int i = low - 1; // Index of the smaller element
+		
+		        // Iterate through the array and rearrange elements
+		        for (int j = low; j < high; j++) {
+		            if (array[j].compareTo(pivot) <= 0) {
+		                i++;
+		                swap(array, i, j);
+		            }
+		        }
+		        
+		        // Swap pivot into correct position
+		        swap(array, i + 1, high);
+		        return i + 1;
+		    }
+		    
+		    /**
+		     * Swaps two elements in the array.
+		     * 
+		     * @param array The array in which elements are swapped.
+		     * @param i     The index of the first element.
+		     * @param j     The index of the second element.
+		     */
+		
+		    private static void swap(Comparable[] array, int i, int j) {
+		        Comparable temp = array[i];
+		        array[i] = array[j];
+		        array[j] = temp;
+		    }
+		    
+		    
+		    
+	public static void insertionSort(Comparable[] array) {
+		int n = array.length;
+		
+		// We start iterating from index 1 because we assume the first element is already sorted.
+		for(int i = 1; i < n; i++) {
+			//key is the element that needs to be inserted in the sorted part of the array.
+			Comparable key = array[i];
+			int j = i - 1;
+			
+			
+			 // Compare key with each element on the left of it until an element smaller than
+		      // it is found.
+		      // For descending order, change key<array[j] to key>array[j].
+			while(j >= 0 && array[j].compareTo(key) < 0) {
+				array[j + 1]= array [j];
+				j--;
+			}
+			 // Place key at after the element just smaller than it.
+			array[j +1] = key; 
+		}
+		
+	}
+	
+	 
+	 /**
+	     * Sorts an array using the Selection Sort algorithm in descending order.
+	     */
+	 public static void selectionSort(Comparable[] array) {
+		 int n = array.length;
+
+	        // Iterate through the array
+	        for (int i = 0; i < n - 1; i++) {
+	            int minIndex = i; // Assume the current index holds the smallest element
+
+	            // Find the index of the smallest element in the remaining array
+	            for (int j = i + 1; j < n; j++) {
+	                if (array[j].compareTo(array[minIndex]) < 0) {
+	                    minIndex = j;
+	                }
+	            }
+
+	            // Swap the found minimum element with the first element of the unsorted part
+	            if (minIndex != i) {
+	                Comparable temp = array[i];
+	                array[i] = array[minIndex];
+	                array[minIndex] = temp;
+	            }
+	        }
+	    }
+	 }
