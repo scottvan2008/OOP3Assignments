@@ -139,6 +139,7 @@ public class AppDriver {
      */
     public static int createAndPopulateArray() {
         File inputFile = new File(fileName);
+        System.out.println("Input file: " + inputFile.getAbsolutePath());
         try (Scanner input = new Scanner(inputFile)) {
             // Read the total number of shapes from the file
             int numberOfShapes = input.nextInt();
