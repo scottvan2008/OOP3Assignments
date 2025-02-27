@@ -35,4 +35,80 @@ public class Sort {
             }
         }
     }
+
+     /**
+     * Sorts an array using Insertion Sort in descending order.
+     */
+    public static void insertionSort(Comparable[] array) {
+        int n = array.length;
+        for (int i = 1; i < n; i++) {
+            Comparable key = array[i];
+            int j = i - 1;
+
+            // Move elements of array[0..i-1] that are smaller than key one position ahead
+            while (j >= 0 && array[j].compareTo(key) < 0) {
+                array[j + 1] = array[j];
+                j--;
+            }
+            array[j + 1] = key;
+        }
+    }
+
+    /**
+     * Sorts an array using Merge Sort in descending order.
+     *
+     * Merge Sort is a divide-and-conquer algorithm that recursively splits the array into two halves,
+     * sorts each half, and then merges the sorted halves back together.
+     * 
+     * @param array The array of Comparable objects to be sorted in descending order.
+     */
+    public static void mergeSort(Comparable[] array) {
+        if (array.length < 2) {
+            return; // Base case: If the array has 0 or 1 element, it is already sorted.
+        }
+        int mid = array.length / 2; // Find the middle index.
+        Comparable[] left = new Comparable[mid]; // Create left subarray.
+        Comparable[] right = new Comparable[array.length - mid];  // Create right subarray.
+
+        System.arraycopy(array, 0, left, 0, mid);
+        System.arraycopy(array, mid, right, 0, array.length - mid);
+
+        // Recursively sort both halves.
+        mergeSort(left);
+        mergeSort(right);
+
+        // Merge the sorted halved together in des order
+        merge(array, left, right);
+    }
+
+    /**
+     * Merges two sorted subarrays into one in descending order.
+     * 
+     * This method takes two already sorted arrays (left and right) and combines them 
+     * into a single sorted array, ensuring that the merged array maintains descending order.
+     * 
+     * @param array The original array where the merged values will be placed.
+     * @param left The left subarray (sorted in des order).
+     * @param right The right subarray (sorted in desc order).
+     */
+    private static void merge(Comparable[] array, Comparable[] left, Comparable[] right) {
+        int i = 0, j = 0, k = 0;
+
+        //compare elements from both subarrays and merge them in desc order.
+        while (i < left.length && j < right.length) {
+            if (left[i].compareTo(right[j]) >= 0) {
+                array[k++] = left[i++];
+            } else {
+                array[k++] = right[j++];
+            }
+        }
+
+         while (i < left.length) {
+            array[k++] = left[i++];
+        }
+
+        while (j < right.length) {
+            array[k++] = right[j++];
+        }
+    }           
 }
