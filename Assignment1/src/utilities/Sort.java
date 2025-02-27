@@ -130,51 +130,7 @@ public class Sort {
 		}
 		
 	}
-	/**
-     * Sorts an array using the Merge Sort algorithm in descending order.
-     */
-	public static void mergeSort(Comparable[] array) {
-		if (array.length < 2) return; // Base case: already sorted
-
-        int mid = array.length / 2;
-
-        // Split the array into two halves
-        Comparable[] left = new Comparable[mid];
-        Comparable[] right = new Comparable[array.length - mid];
-
-        System.arraycopy(array, 0, left, 0, mid);
-        System.arraycopy(array, mid, right, 0, array.length - mid);
-
-        // Recursively sort both halfs
-        mergeSort(left);
-        mergeSort(right);
-
-        // Merge the sorted halves
-        merge(array, left, right);
-	}
 	
-	 private static void merge(Comparable[] array, Comparable[] left, Comparable[] right) {
-	        int i = 0, j = 0, k = 0;
-
-	        // Merge elements from left and right into the main array in sorted order
-	        while (i < left.length && j < right.length) {
-	            if (left[i].compareTo(right[j]) >= 0) {
-	                array[k++] = left[i++];
-	            } else {
-	                array[k++] = right[j++];
-	            }
-	        }
-
-	        // Copy any remaining elements from left array
-	        while (i < left.length) {
-	            array[k++] = left[i++];
-	        }
-
-	        // Copy any remaining elements from right array
-	        while (j < right.length) {
-	            array[k++] = right[j++];
-	        }
-	    }
 	 
 	 /**
 	     * Sorts an array using the Selection Sort algorithm in descending order.
