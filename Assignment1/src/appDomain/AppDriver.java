@@ -22,7 +22,6 @@ import shapes.SquarePrism;
 import shapes.TriangularPrism;
 import utilities.Result;
 import utilities.Sort;
-import shapes.Shape3D;
 
 public class AppDriver {
 
@@ -98,39 +97,19 @@ public class AppDriver {
         long start = System.nanoTime(); // Start time measurement
         String sortAlgorithmName = "";
 
-        if (shapesArray.length > 10_000) {
-            System.out.println("Large dataset detected! Using optimized sorting...");
-            Arrays.parallelSort(shapesArray, comparator);
-            sortAlgorithmName = "ParallelSort";
-        } else {
         // Perform sorting based on the selected algorithm
         switch (sortAlgorithm) {
             case 'b':
-                Sort.bubbleSort(shapesArray, comparator); // Bubble sort
+                Sort.bubbleSort(shapesArray); // Bubble sort
                 sortAlgorithmName = "BubbleSort";
                 break;
-             case 'i':
-                Sort.insertionSort(shapesArray, comparator); //insertion sort 
-                sortAlgorithmName = "InsertionSort";
-                break;
-            case 'm':
-                Sort.mergeSort(shapesArray, comparator); //merge sort
-                sortAlgorithmName = "MergeSort";
-                break;
-            case 's':
-                    Sort.selectionSort(shapesArray, comparator);
-                    sortAlgorithmName = "SelectionSort";
-                    break;
-                case 'q':
-                    Sort.quickSort(shapesArray, 0, shapesArray.length - 1, comparator);
-                    sortAlgorithmName = "QuickSort";
-                    break;
             // Add cases for other sorting algorithms (e.g., selection, insertion, merge, quick)
-           default:
-                    System.out.println("Invalid sort: Choose b (bubble), i (insertion), m (merge), s (selection), or q (quick)");
-                    isValidInput = false;
-                    break;
-            }
+            default:
+                System.out.println("Invalid sort: -s or -S followed by b (bubble), s (selection), i (insertion), m (merge), q (quick) or z\r\n"
+                        + "(your choice of sorting algorithm) with no spaces\r\n"
+                        + "");
+                isValidInput = false; // Mark input as invalid
+                break;
         }
 
         long stop = System.nanoTime(); // Stop time measurement
