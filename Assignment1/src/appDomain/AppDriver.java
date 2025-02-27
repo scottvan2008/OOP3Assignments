@@ -22,6 +22,7 @@ import shapes.SquarePrism;
 import shapes.TriangularPrism;
 import utilities.Result;
 import utilities.Sort;
+import shapes.Shape3D;
 
 public class AppDriver {
 
@@ -103,11 +104,17 @@ public class AppDriver {
                 Sort.bubbleSort(shapesArray); // Bubble sort
                 sortAlgorithmName = "BubbleSort";
                 break;
+             case 'i':
+                Sort.insertionSort(shapesArray); //insertion sort 
+                sortAlgorithmName = "InsertionSort";
+                break;
+            case 'm':
+                Sort.mergeSort(shapesArray); //merge sort
+                sortAlgorithmName = "MergeSort";
+                break;
             // Add cases for other sorting algorithms (e.g., selection, insertion, merge, quick)
             default:
-                System.out.println("Invalid sort: -s or -S followed by b (bubble), s (selection), i (insertion), m (merge), q (quick) or z\r\n"
-                        + "(your choice of sorting algorithm) with no spaces\r\n"
-                        + "");
+                System.out.println("Invalid sort: Choose b (bubble), i (insertion), or m (merge)");
                 isValidInput = false; // Mark input as invalid
                 break;
         }
