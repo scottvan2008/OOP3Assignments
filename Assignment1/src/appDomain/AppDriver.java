@@ -117,7 +117,14 @@ public class AppDriver {
                 Sort.selectionSort(shapesArray);; // Selection sort 
                 sortAlgorithmName = "SelectionSort";
                 break;
-                
+            case 'm':
+                Sort.mergeSort(shapesArray);; // MergeSort sort
+                sortAlgorithmName = "MergeSort";
+                break;
+            case 'z':
+                Sort.heapSort(shapesArray);; // HeapSort sort
+                sortAlgorithmName = "HeapSort";
+                break;
             default:
                 System.out.println("Invalid sort: -s or -S followed by b (bubble), s (selection), i (insertion), m (merge), q (quick) or z\r\n"
                         + "(your choice of sorting algorithm) with no spaces\r\n"
@@ -139,7 +146,7 @@ public class AppDriver {
      */
     public static int createAndPopulateArray() {
         File inputFile = new File(fileName);
-        System.out.println("Input file: " + inputFile.getAbsolutePath());
+
         try (Scanner input = new Scanner(inputFile)) {
             // Read the total number of shapes from the file
             int numberOfShapes = input.nextInt();
