@@ -40,12 +40,10 @@ public class Sort {
 
 
     /**
-     * Quick sort implementation
-     * it chooses a pivot and splits the array into two sub-lists.
-     * it compares the elements with that pivot and keeps doing that until they are in the right place.
-     * when there is only one element left in the sub-array, as a single element is already sorted.
+     * Sorts the array in descending order using the quicksort algorithm.
+     *
+     * @param array The array to be sorted.
      */
-
     public static void quickSort(Comparable[] array) {
         quickSortHelper(array, 0, array.length - 1);
     }
@@ -54,10 +52,9 @@ public class Sort {
      * Helper method that applies the quicksort algorithm recursively.
      *
      * @param array The array to be sorted.
-     * @param low   The starting index of the portion to be sorted.
-     * @param high  The ending index of the portion to be sorted.
+     * @param low The starting index of the portion to be sorted.
+     * @param high The ending index of the portion to be sorted.
      */
-
     private static void quickSortHelper(Comparable[] array, int low, int high) {
         if (low < high) {
             int partitionIndex = slice(array, low, high);
@@ -69,22 +66,23 @@ public class Sort {
     }
 
     /**
-     * Slices the array around a pivot such that elements smaller than
-     * the pivot are on the left, and elements greater than the pivot are on the right.
+     * Slices the array around a pivot such that elements larger than
+     * the pivot are on the left, and elements smaller than the pivot are on the right.
+     * This creates a descending order sort.
      *
      * @param array The array to partition.
-     * @param low   The starting index.
-     * @param high  The ending index (pivot position).
+     * @param low The starting index.
+     * @param high The ending index (pivot position).
      * @return The partition index where the pivot is placed correctly.
      */
-
     private static int slice(Comparable[] array, int low, int high) {
         Comparable pivot = array[high]; // Choose the last element as the pivot
-        int i = low - 1; // Index of the smaller element
+        int i = low - 1; // Index of the larger element
 
         // Iterate through the array and rearrange elements
         for (int j = low; j < high; j++) {
-            if (array[j].compareTo(pivot) <= 0) {
+            // Changed comparison direction for descending order (>= instead of <=)
+            if (array[j].compareTo(pivot) >= 0) {
                 i++;
                 swap(array, i, j);
             }
@@ -99,10 +97,9 @@ public class Sort {
      * Swaps two elements in the array.
      *
      * @param array The array in which elements are swapped.
-     * @param i     The index of the first element.
-     * @param j     The index of the second element.
+     * @param i The index of the first element.
+     * @param j The index of the second element.
      */
-
     private static void swap(Comparable[] array, int i, int j) {
         Comparable temp = array[i];
         array[i] = array[j];
@@ -135,27 +132,29 @@ public class Sort {
 
 
     /**
-     * Sorts an array using the Selection Sort algorithm in descending order.
+     * Sorts the array in descending order using the selection sort algorithm.
+     * 
+     * @param array The array to be sorted.
      */
     public static void selectionSort(Comparable[] array) {
         int n = array.length;
 
         // Iterate through the array
         for (int i = 0; i < n - 1; i++) {
-            int minIndex = i; // Assume the current index holds the smallest element
+            int maxIndex = i; // Assume the current index holds the largest element
 
-            // Find the index of the smallest element in the remaining array
+            // Find the index of the largest element in the remaining array
             for (int j = i + 1; j < n; j++) {
-                if (array[j].compareTo(array[minIndex]) < 0) {
-                    minIndex = j;
+                if (array[j].compareTo(array[maxIndex]) > 0) {
+                    maxIndex = j;
                 }
             }
 
-            // Swap the found minimum element with the first element of the unsorted part
-            if (minIndex != i) {
+            // Swap the found maximum element with the first element of the unsorted part
+            if (maxIndex != i) {
                 Comparable temp = array[i];
-                array[i] = array[minIndex];
-                array[minIndex] = temp;
+                array[i] = array[maxIndex];
+                array[maxIndex] = temp;
             }
         }
     }
@@ -187,30 +186,68 @@ public class Sort {
         }
     }
 
+    /**
+     * Sorts the array in descending order using the heap sort algorithm.
+     * 
+     * @param array The array to be sorted.
+     */
     public static void heapSort(Comparable[] array) {
         int n = array.length;
+        
+        // Build a min heap instead of a max heap
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(array, n, i);
         }
+        
+        // Extract elements from heap one by one
         for (int i = n - 1; i > 0; i--) {
             swap(array, 0, i);
             heapify(array, i, 0);
         }
     }
 
+    /**
+     * Heapify procedure modified to create a min heap instead of a max heap.
+     * 
+     * @param array The array to heapify.
+     * @param n The size of the heap.
+     * @param i The index of the root element of the subtree.
+     */
     private static void heapify(Comparable[] array, int n, int i) {
-        int largest = i;
+        int smallest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
-        if (left < n && array[left].compareTo(array[largest]) > 0) {
-            largest = left;
+        
+        // Find the smallest element among root, left child and right child
+        if (left < n && array[left].compareTo(array[smallest]) < 0) {
+            smallest = left;
         }
-        if (right < n && array[right].compareTo(array[largest]) > 0) {
-            largest = right;
+        
+        if (right < n && array[right].compareTo(array[smallest]) < 0) {
+            smallest = right;
         }
-        if (largest != i) {
-            swap(array, i, largest);
-            heapify(array, n, largest);
+        
+        // If smallest is not root
+        if (smallest != i) {
+            swap(array, i, smallest);
+            heapify(array, n, smallest);
         }
     }
+
+    /**
+     * Swaps two elements in the array.
+     * 
+     * @param array The array in which elements are swapped.
+     * @param i The index of the first element.
+     * @param j The index of the second element.
+     */
+    private static void swap1(Comparable[] array, int i, int j) {
+        Comparable temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    
+    
+    
+    
 }
