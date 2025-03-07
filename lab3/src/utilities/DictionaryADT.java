@@ -3,7 +3,10 @@ package utilities;
 /**
 * DictionaryADT.java
 *
-* @author your name
+* @author Sijerina Nepal
+* @author Maria Xavier
+* @author Wenhan Liu
+* @author Scott Yinan Fan
 * @version major.minor revision number starting at 1.0
 *
 * Class Definition: This interface represents the public contract for the
@@ -40,7 +43,7 @@ public interface DictionaryADT<K, V> {
      * @throws KeyNotFoundException if the key does not exist
      * @throws IllegalArgumentException if key is null
      */
-    V remove(K key) throws KeyNotFoundException;
+    V remove(K key) throws KeyNotFoundException, IllegalArgumentException;
 
     /**
      * Updates the value associated with a key.
