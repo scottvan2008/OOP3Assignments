@@ -1,82 +1,86 @@
 package utilities;
+import exceptions.DuplicateKeyException;
 
 /**
 * DictionaryADT.java
 *
-* @author Sijerina Nepal
-* @author Maria Xavier
-* @author Wenhan Liu
-* @author Scott Yinan Fan
-* @version major.minor revision number starting at 1.0
-*
+* @author kitty
+* @version 1.1
+* 
 * Class Definition: This interface represents the public contract for the
-* implementation of Dictionary for the DictionaryADT Lab.
+* implementation of Dictionary for the DictionaryADT Lab. This data type 
+* will store data in (key, value) pairs and keys must be unique. 
 */
 
+public interface DictionaryADT<K,V>
+{
+	/**
+	 * Constructor method to create a new Dictionary object.
+	 * 
+	 * Precondition: None.
+	 * 
+	 * Postcondition: A dictionary object is created and its size is 
+	 * initialized to the value in the argument, or a default of 10.
+	 * 
+	 * @param size Optional: the size of the new dictionary, default is 10.
+	 */
+	public void create( int size );
 
-import exceptions.DuplicateKeyException;
-import exceptions.KeyNotFoundException;
+	/**
+	 * Mutator method to insert a new key-value pair into the Dictionary.
+	 * 
+	 * Precondition: A valid dictionary object exists and non-null values
+	 * are passed as arguments.
+	 * 
+	 * Postcondition: The new key-value pair is added to the Dictionary.
+	 * 
+	 * @param K key
+	 * @param V value
+	 * @return true if key-value pair has been added successfully.
+	 * 
+	 * @throws DuplicateKeyException is thrown if key already exist.
+	 */
+	public boolean insert( K key, V value ) throws DuplicateKeyException;
 
-/**
- * DictionaryADT.java
- *
- * @param <K> the type of keys in this dictionary
- * @param <V> the type of values associated with the keys
- *
- * This interface represents the public contract for the implementation of Dictionary.
- */
-public interface DictionaryADT<K, V> {
+	/**
+	 * Mutator method to remove a key-value pair from the Dictionary.
+	 * 
+	 * Precondition: A valid dictionary object exists and a non-null value
+	 * is passed as argument.
+	 * 
+	 * Postcondition: The key-value pair is deleted from the Dictionary.
+	 * 
+	 * @param K key
+	 * @return the value of the key removed, null if key does not exist.
+	 */
+	public V remove( K key );
 
-    /**
-     * Inserts a (key, value) pair into the dictionary.
-     * @param key the key to insert
-     * @param value the value associated with the key
-     * @throws DuplicateKeyException if the key already exists
-     * @throws IllegalArgumentException if key or value is null
-     */
-    void insert(K key, V value) throws DuplicateKeyException;
+	/**
+	 * Mutator method to update a key-value pair from the Dictionary.
+	 * 
+	 * Precondition: A valid dictionary object exists and a non-null value
+	 * is passed as argument.
+	 * 
+	 * Postcondition: The value of the key is changed in the Dictionary.
+	 * 
+	 * @param K key
+	 * @param V the new value
+	 * @return true if key-value pair has been changed successfully, or 
+	 * false if key does not exist.
+	 */
+	public boolean update( K key, V value );
 
-    /**
-     * Removes a key and its associated value from the dictionary.
-     * @param key the key to remove
-     * @return the value that was removed
-     * @throws KeyNotFoundException if the key does not exist
-     * @throws IllegalArgumentException if key is null
-     */
-    V remove(K key) throws KeyNotFoundException, IllegalArgumentException;
+	/**
+	 * Accessor method to retrieve the value of a key from the Dictionary.
+	 * 
+	 * Precondition: A valid dictionary object exists and a non-null value
+	 * is passed as argument.
+	 * 
+	 * Postcondition: The value of the key is returned from the Dictionary.
+	 * 
+	 * @param K key
+	 * @return the value of the key, null if key does not exist.
+	 */
+	public V lookup( K key );
 
-    /**
-     * Updates the value associated with a key.
-     * @param key the key to update
-     * @param value the new value
-     * @throws KeyNotFoundException if the key does not exist
-     * @throws IllegalArgumentException if key or value is null
-     */
-    void update(K key, V value) throws KeyNotFoundException;
-
-    /**
-     * Looks up the value associated with a given key.
-     * @param key the key to look up
-     * @return the associated value
-     * @throws KeyNotFoundException if the key does not exist
-     * @throws IllegalArgumentException if key is null
-     */
-    V lookup(K key) throws KeyNotFoundException;
-
-    /**
-     * Checks if the dictionary is empty.
-     * @return true if the dictionary is empty, false otherwise
-     */
-    boolean isEmpty();
-
-    /**
-     * Returns the number of key-value pairs in the dictionary.
-     * @return the size of the dictionary
-     */
-    int size();
-
-    /**
-     * Clears all key-value pairs in the dictionary.
-     */
-    void clear();
 }
