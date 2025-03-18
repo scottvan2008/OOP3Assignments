@@ -103,23 +103,22 @@ public class AppDriver {
                 Sort.bubbleSort(shapesArray); // Bubble sort
                 sortAlgorithmName = "BubbleSort";
                 break;
+
             case 'q':
                 Sort.quickSort(shapesArray); // Quick sort
                 sortAlgorithmName = "QuickSort";
                 break;
+
             case 'i':
                 Sort.insertionSort(shapesArray); // Insertion Sort
                 sortAlgorithmName = "InsertionSort";
                 break;
-            case 'm':
-                Sort.mergeSort(shapesArray);; // Merge Sort
-                sortAlgorithmName = "MergeSort";
-                break;
+
             case 's':
                 Sort.selectionSort(shapesArray);; // Selection sort 
                 sortAlgorithmName = "SelectionSort";
                 break;
-            
+<
             default:
                 System.out.println("Invalid sort: -s or -S followed by b (bubble), s (selection), i (insertion), m (merge), q (quick) or z\r\n"
                         + "(your choice of sorting algorithm) with no spaces\r\n"
@@ -141,6 +140,7 @@ public class AppDriver {
      */
     public static int createAndPopulateArray() {
         File inputFile = new File(fileName);
+
         try (Scanner input = new Scanner(inputFile)) {
             // Read the total number of shapes from the file
             int numberOfShapes = input.nextInt();
@@ -226,3 +226,5 @@ public class AppDriver {
         }
     }
 }
+
+// test restrict commit to main
