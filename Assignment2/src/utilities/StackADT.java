@@ -1,4 +1,5 @@
 package utilities;
+import java.util.NoSuchElementException;
 
 /**
  * A generic interface representing a Stack Abstract Data Type (ADT).
