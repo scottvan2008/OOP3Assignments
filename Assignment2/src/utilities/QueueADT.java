@@ -1,58 +1,114 @@
 package utilities;
 
-import java.util.NoSuchElementException;
+import exceptions.EmptyQueueException;
 
 /**
- * A generic interface representing a Queue Abstract Data Type (ADT).
+ * A generic interface defining the behavior of a Queue Abstract Data Type (ADT).
  *
- * @param <T> The type of elements in the queue.
+ * @param <T> The type of elements stored in the queue.
  */
 public interface QueueADT<T> {
-    
-    /**
-     * Initializes the queue with a specified size.
-     *
-     * @param size The maximum size of the queue.
-     * @throws IllegalArgumentException if the size is non-positive.
-     */
-    void create(int size);
 
     /**
-     * Adds an item to the back of the queue.
+     * Adds an element to the end of the queue.
      *
-     * @param item The item to be added.
-     * @throws IllegalArgumentException if the item is null.
-     * @throws IllegalStateException if the queue is full.
+     * @param item The element to add.
+     * @throws NullPointerException if item is null.
      */
-    void enqueue(T item);
+    void enqueue(T item) throws NullPointerException;
 
     /**
-     * Removes and returns the item at the front of the queue.
+     * Removes and returns the front element.
      *
-     * @return The item at the front of the queue.
-     * @throws NoSuchElementException if the queue is empty.
+     * @return The element removed.
+     * @throws EmptyQueueException if queue is empty.
      */
-    T dequeue() throws NoSuchElementException;
+    T dequeue() throws EmptyQueueException;
 
     /**
-     * Returns the item at the front of the queue without removing it.
+     * Returns the front element without removing.
      *
-     * @return The item at the front of the queue.
-     * @throws NoSuchElementException if the queue is empty.
+     * @return The front element.
+     * @throws EmptyQueueException if queue is empty.
      */
-    T front() throws NoSuchElementException;
+    T peek() throws EmptyQueueException;
 
     /**
      * Checks if the queue is empty.
      *
-     * @return {@code true} if the queue is empty, {@code false} otherwise.
+     * @return true if empty.
      */
     boolean isEmpty();
 
     /**
-     * Returns the number of elements in the queue.
+     * Returns the number of elements.
      *
-     * @return The current size of the queue.
+     * @return The size.
      */
     int size();
+
+    /**
+     * Removes all elements.
+     */
+    void clear();
+
+    /**
+     * Removes all elements.
+     */
+    void dequeueAll();
+
+    /**
+     * Checks if queue contains specified element.
+     *
+     * @param item The element to search.
+     * @return true if found.
+     * @throws NullPointerException if item is null.
+     */
+    boolean contains(T item) throws NullPointerException;
+
+    /**
+     * Returns index (1-based) of item, or -1.
+     *
+     * @param item The element to search.
+     * @return 1-based index or -1.
+     */
+    int search(T item);
+
+    /**
+     * Returns an array of queue elements.
+     *
+     * @return An array.
+     */
+    Object[] toArray();
+
+    /**
+     * Returns an array of queue elements.
+     *
+     * @param holder Array to hold elements.
+     * @return An array.
+     * @throws NullPointerException if holder is null.
+     */
+    T[] toArray(T[] holder) throws NullPointerException;
+
+    /**
+     * Returns an iterator over queue elements.
+     *
+     * @return An iterator.
+     */
+    Iterator<T> iterator();
+
+    /**
+     * Returns false since queue has no fixed capacity.
+     *
+     * @return false
+     */
+    boolean isFull();
+
+    /**
+     * Checks if this queue equals another queue.
+     *
+     * @param thatQueue The queue to compare.
+     * @return true if equal.
+     */
+    boolean equals(Object thatQueue);
 }

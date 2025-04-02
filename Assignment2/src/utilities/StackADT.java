@@ -1,57 +1,110 @@
 package utilities;
-import java.util.NoSuchElementException;
+
+import java.util.EmptyStackException;
 
 /**
- * A generic interface representing a Stack Abstract Data Type (ADT).
+ * A generic interface defining the behavior of a Stack Abstract Data Type (ADT).
  *
- * @param <T> The type of elements in the stack.
+ * @param <T> The type of elements stored in the stack.
  */
 public interface StackADT<T> {
-    
-    /**
-     * Initializes the stack with a specified size.
-     *
-     * @param size The maximum size of the stack.
-     * @throws IllegalArgumentException if the size is non-positive.
-     */
-    void create(int size);
 
     /**
-     * Pushes an item onto the stack.
+     * Pushes an element onto the top of the stack.
      *
-     * @param item The item to be pushed onto the stack.
-     * @throws IllegalArgumentException if the item is null.
-     * @throws IllegalStateException if the stack is full.
+     * @param item The element to be pushed.
+     * @throws NullPointerException if the item is null.
      */
-    void push(T item);
+    void push(T item) throws NullPointerException;
 
     /**
-     * Removes and returns the top item of the stack.
+     * Removes and returns the top element of the stack.
      *
-     * @return The item removed from the stack.
-     * @throws NoSuchElementException if the stack is empty.
+     * @return The element removed from the top of the stack.
+     * @throws EmptyStackException if the stack is empty.
      */
-    T pop();
+    T pop() throws EmptyStackException;
 
     /**
-     * Returns the top item of the stack without removing it.
+     * Returns the top element without removing it.
      *
-     * @return The top item of the stack.
-     * @throws NoSuchElementException if the stack is empty.
+     * @return The element at the top.
+     * @throws EmptyStackException if the stack is empty.
      */
-    T peek();
+    T peek() throws EmptyStackException;
 
     /**
      * Checks if the stack is empty.
      *
-     * @return {@code true} if the stack is empty, {@code false} otherwise.
+     * @return true if the stack is empty.
      */
     boolean isEmpty();
 
     /**
-     * Returns the number of items currently in the stack.
+     * Returns the number of elements in the stack.
      *
      * @return The current size of the stack.
      */
     int size();
+
+    /**
+     * Removes all elements from the stack.
+     */
+    void clear();
+
+    /**
+     * Checks if the stack contains the specified element.
+     *
+     * @param item The element to search.
+     * @return true if found, false otherwise.
+     * @throws NullPointerException if item is null.
+     */
+    boolean contains(T item) throws NullPointerException;
+
+    /**
+     * Returns the 1-based position from the top of the stack.
+     *
+     * @param item The element to search.
+     * @return 1-based position, or -1 if not found.
+     * @throws NullPointerException if item is null.
+     */
+    int search(T item) throws NullPointerException;
+
+    /**
+     * Returns an array containing all elements from top to bottom.
+     *
+     * @return An array of elements.
+     */
+    Object[] toArray();
+
+    /**
+     * Returns an array containing all elements from top to bottom.
+     *
+     * @param holder Array to hold the elements.
+     * @return An array of elements.
+     * @throws NullPointerException if holder is null.
+     */
+    T[] toArray(T[] holder) throws NullPointerException;
+
+    /**
+     * Returns an iterator over the stack elements from top to bottom.
+     *
+     * @return An iterator.
+     */
+    Iterator<T> iterator();
+
+    /**
+     * Returns false since this stack has no fixed capacity.
+     *
+     * @return false
+     */
+    boolean stackOverflow();
+
+    /**
+     * Checks if this stack equals another stack.
+     *
+     * @param thatStack Another stack to compare.
+     * @return true if equal.
+     */
+    boolean equals(Object thatStack);
 }
