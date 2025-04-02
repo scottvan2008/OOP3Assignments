@@ -1,36 +1,42 @@
 package implementations;
 
-import exceptions.EmptyQueueException;
-import utilities.Iterator;
 import utilities.QueueADT;
+import utilities.Iterator;
+import exceptions.EmptyQueueException;
 
+import java.io.Serializable;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class MyQueue<T> implements QueueADT<T> {
+public class MyQueue<E> implements QueueADT<E>, Serializable {
 
-    private MyDLL<T> list;
+    private MyDLL<E> list;
 
     public MyQueue() {
         list = new MyDLL<>();
     }
 
     @Override
-    public void enqueue(T item) {
-        if (item == null) throw new NullPointerException();
-        list.add(item);
+    public void enqueue(E toAdd) throws NullPointerException {
+        if (toAdd == null) throw new NullPointerException();
+        list.add(toAdd);
     }
 
     @Override
-    public T dequeue() {
+    public E dequeue() throws EmptyQueueException {
         if (isEmpty()) throw new EmptyQueueException();
         return list.remove(0);
     }
 
     @Override
-    public T peek() {
+    public E peek() throws EmptyQueueException {
         if (isEmpty()) throw new EmptyQueueException();
         return list.get(0);
+    }
+
+    @Override
+    public void dequeueAll() {
+        list.clear();
     }
 
     @Override
@@ -39,35 +45,37 @@ public class MyQueue<T> implements QueueADT<T> {
     }
 
     @Override
-    public int size() {
-        return list.size();
+    public boolean contains(E toFind) throws NullPointerException {
+        if (toFind == null) throw new NullPointerException();
+        return list.contains(toFind);
     }
 
     @Override
-    public void clear() {
-        list.clear();
-    }
-
-    @Override
-    public void dequeueAll() {
-        clear();
-    }
-
-    @Override
-    public boolean contains(T item) {
-        if (item == null) throw new NullPointerException();
-        return list.contains(item);
-    }
-
-    @Override
-    public int search(T item) {
-        if (item == null) return -1;
-        for (int i = 0; i < size(); i++) {
-            if (Objects.equals(list.get(i), item)) {
+    public int search(E toFind) {
+        if (toFind == null) return -1;
+        for (int i = 0; i < list.size(); i++) {
+            if (Objects.equals(list.get(i), toFind)) {
                 return i + 1;
             }
         }
         return -1;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return list.iterator();
+    }
+
+    @Override
+    public boolean equals(QueueADT<E> that) {
+        if (this == that) return true;
+        if (that == null || this.size() != that.size()) return false;
+        Iterator<E> it1 = this.iterator();
+        Iterator<E> it2 = that.iterator();
+        while (it1.hasNext() && it2.hasNext()) {
+            if (!Objects.equals(it1.next(), it2.next())) return false;
+        }
+        return true;
     }
 
     @Override
@@ -76,13 +84,8 @@ public class MyQueue<T> implements QueueADT<T> {
     }
 
     @Override
-    public T[] toArray(T[] holder) {
+    public E[] toArray(E[] holder) throws NullPointerException {
         return list.toArray(holder);
-    }
-
-    @Override
-    public Iterator<T> iterator() {
-        return list.iterator();
     }
 
     @Override
@@ -91,16 +94,7 @@ public class MyQueue<T> implements QueueADT<T> {
     }
 
     @Override
-    public boolean equals(Object thatQueue) {
-        if (this == thatQueue) return true;
-        if (thatQueue == null || !(thatQueue instanceof QueueADT)) return false;
-        QueueADT<?> other = (QueueADT<?>) thatQueue;
-        if (this.size() != other.size()) return false;
-        Iterator<T> it1 = this.iterator();
-        Iterator<?> it2 = other.iterator();
-        while (it1.hasNext() && it2.hasNext()) {
-            if (!Objects.equals(it1.next(), it2.next())) return false;
-        }
-        return true;
+    public int size() {
+        return list.size();
     }
 }
